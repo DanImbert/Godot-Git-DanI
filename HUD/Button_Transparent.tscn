@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="Continue_Button" type="Button"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -960.0
+margin_top = -545.0
+margin_right = 960.0
+margin_bottom = 535.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

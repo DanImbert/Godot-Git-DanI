@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Enemies/NME_Liner.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/NME_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Move_Behaviours/Move_FollowPath.gd" type="Script" id=3]
+[ext_resource path="res://Enemies/Attack_Behaviours/Attack_ShootAfterDelay.gd" type="Script" id=5]
+[ext_resource path="res://Weapons/Enemies/NME_Weap_Basic.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Weapons/Enemies/NME_Proj_Homing.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CapsuleShape2D" id=1]
+height = 41.3008
+
+[sub_resource type="CapsuleShape2D" id=2]
+height = 41.3008
+
+[node name="NME_Liner" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+move_state_path = NodePath("Move_FollowPath")
+attack_state_path = NodePath("Attack_ShootAfterDelay")
+weapon_path = NodePath("NME_Weap_Basic")
+
+[node name="Polygon2D" parent="." index="0"]
+position = Vector2( -0.181817, -0.162637 )
+scale = Vector2( 1.43551, 1.20779 )
+polygon = PoolVector2Array( -3.30851, -16.8618, -8.08148, -14.2102, -0.303307, -27.2916, 8.53553, -13.8566, 3.23222, -16.8618, 3.23222, 14.2509, 7.47487, 11.0689, -0.126534, 27.1556, -8.9183, 10.9189, -3.48529, 14.2509 )
+
+[node name="Nav_Collision" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 2 )
+
+[node name="Health" parent="." index="3"]
+max_health = 2
+
+[node name="Move_FollowPath" type="Node" parent="." index="5"]
+script = ExtResource( 3 )
+speed = 100
+
+[node name="Attack_ShootAfterDelay" type="Node" parent="." index="6"]
+script = ExtResource( 5 )
+delay = 8.0
+
+[node name="NME_Weap_Basic" parent="." index="7" instance=ExtResource( 6 )]
+projectile = ExtResource( 7 )
+time_between_shots = 3.0
+
+[editable path="Hitbox"]

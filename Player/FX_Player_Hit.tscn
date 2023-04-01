@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/background.png" type="Texture" id=1]
+[ext_resource path="res://Player/ParticleEffect.gd" type="Script" id=2]
+
+[node name="HitParticles" type="CPUParticles2D"]
+z_index = -1
+emitting = false
+amount = 15
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+lifetime_randomness = 0.2
+texture = ExtResource( 1 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 400.0
+initial_velocity_random = 0.7
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+scale_amount = 0.5
+scale_amount_random = 1.0
+script = ExtResource( 2 )
+
+[node name="EffectTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+[connection signal="timeout" from="EffectTimer" to="." method="_on_Timer_timeout"]

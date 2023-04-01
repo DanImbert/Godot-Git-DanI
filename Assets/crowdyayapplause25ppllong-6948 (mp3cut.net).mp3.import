@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/crowdyayapplause25ppllong-6948 (mp3cut.net).mp3-f8628e78ed8b710ee6d02e8236623a96.mp3str"
+
+[deps]
+
+source_file="res://Assets/crowdyayapplause25ppllong-6948 (mp3cut.net).mp3"
+dest_files=[ "res://.import/crowdyayapplause25ppllong-6948 (mp3cut.net).mp3-f8628e78ed8b710ee6d02e8236623a96.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

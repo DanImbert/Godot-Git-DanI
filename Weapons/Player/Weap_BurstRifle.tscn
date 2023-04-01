@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Weapons/Player/Proj_StraightHeavy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/Weap_General.gd" type="Script" id=2]
+[ext_resource path="res://Components/PlaySound2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Audio/rifle.wav" type="AudioStream" id=4]
+
+[node name="Weap_BurstRifle" type="Node2D"]
+script = ExtResource( 2 )
+_shot_type = 1
+display_name = "Burst Rifle"
+projectile = ExtResource( 1 )
+time_between_shots = 0.06
+time_between_bursts = 0.5
+knockback_amount = 750
+block_mov_amount = 0.0
+block_mov_duration = 0.3
+block_rot_duration = 0.3
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="BurstTimer" type="Timer" parent="."]
+
+[node name="ShotSound" parent="." instance=ExtResource( 3 )]
+stream = ExtResource( 4 )
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]
+[connection signal="timeout" from="BurstTimer" to="." method="_on_BurstTimer_timeout"]

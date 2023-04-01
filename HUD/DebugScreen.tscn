@@ -1,0 +1,205 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://HUD/DebugScreen.gd" type="Script" id=1]
+
+[node name="DebugScreen" type="MarginContainer"]
+margin_right = 423.0
+margin_bottom = 110.0
+script = ExtResource( 1 )
+
+[node name="RightOffset" type="MarginContainer" parent="."]
+margin_right = 483.0
+margin_bottom = 110.0
+mouse_filter = 2
+custom_constants/margin_right = -5
+
+[node name="Background" type="ColorRect" parent="RightOffset"]
+margin_right = 488.0
+margin_bottom = 110.0
+mouse_filter = 2
+color = Color( 0.596078, 0.596078, 0.596078, 0.784314 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 483.0
+margin_bottom = 110.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 483.0
+margin_bottom = 110.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 12.0
+margin_right = 483.0
+margin_bottom = 80.0
+alignment = 1
+
+[node name="SpawnersContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 76.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/SpawnersContainer"]
+margin_right = 76.0
+margin_bottom = 14.0
+text = "Spawners"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpawnersButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer/SpawnersContainer"]
+margin_top = 18.0
+margin_right = 76.0
+margin_bottom = 58.0
+focus_neighbour_left = NodePath("../../HBoxContainer2/EnemySelection")
+focus_neighbour_right = NodePath("../../HBoxContainer/WeaponSelection")
+focus_next = NodePath("../../HBoxContainer/WeaponSelection")
+focus_previous = NodePath("../../HBoxContainer2/EnemySelection")
+focus_mode = 0
+size_flags_horizontal = 4
+pressed = true
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 80.0
+margin_right = 156.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MusicContainer"]
+margin_right = 76.0
+margin_bottom = 14.0
+text = "Music"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer/MusicContainer"]
+margin_top = 18.0
+margin_right = 76.0
+margin_bottom = 58.0
+focus_neighbour_left = NodePath("../../HBoxContainer2/EnemySelection")
+focus_neighbour_right = NodePath("../../HBoxContainer/WeaponSelection")
+focus_next = NodePath("../../HBoxContainer/WeaponSelection")
+focus_previous = NodePath("../../HBoxContainer2/EnemySelection")
+focus_mode = 0
+size_flags_horizontal = 4
+pressed = true
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GodModeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 160.0
+margin_right = 236.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GodModeContainer"]
+margin_right = 76.0
+margin_bottom = 14.0
+text = "God Mode"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GodModeButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer/GodModeContainer"]
+margin_top = 18.0
+margin_right = 76.0
+margin_bottom = 58.0
+focus_neighbour_left = NodePath("../../HBoxContainer2/EnemySelection")
+focus_neighbour_right = NodePath("../../HBoxContainer/WeaponSelection")
+focus_next = NodePath("../../HBoxContainer/WeaponSelection")
+focus_previous = NodePath("../../HBoxContainer2/EnemySelection")
+focus_mode = 0
+size_flags_horizontal = 4
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 240.0
+margin_right = 364.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="WeaponSelection" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_top = 12.0
+margin_right = 124.0
+margin_bottom = 32.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Weapon Select"
+align = 1
+
+[node name="LevelSelection" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 9.0
+margin_top = 36.0
+margin_right = 115.0
+margin_bottom = 56.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Level select"
+align = 1
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 368.0
+margin_right = 483.0
+margin_bottom = 68.0
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="EnemySelection" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+margin_right = 115.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Enemy Select"
+align = 1
+
+[node name="GameModeSelection" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+margin_left = 3.0
+margin_top = 24.0
+margin_right = 111.0
+margin_bottom = 44.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Game mode"
+align = 1
+
+[node name="DifficultySelection" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+margin_left = 43.0
+margin_top = 48.0
+margin_right = 72.0
+margin_bottom = 68.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+align = 1
+
+[node name="CloseLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 84.0
+margin_right = 483.0
+margin_bottom = 98.0
+text = "(Press ~ to continue)"
+align = 1
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/WeaponSelection" to="." method="_on_WeaponSelection_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/LevelSelection" to="." method="_on_LevelSelection_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer2/EnemySelection" to="." method="_on_EnemySelection_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer2/GameModeSelection" to="." method="_on_GameModeSelection_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer2/DifficultySelection" to="." method="_on_DifficultySelection_item_selected"]

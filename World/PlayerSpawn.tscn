@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="PlayerSpawn" type="Position2D"]
+__meta__ = {
+"_editor_description_": "This is where the player will move to when a new level is loaded.",
+"_gizmo_extents_": 15.0
+}

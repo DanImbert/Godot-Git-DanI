@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Weapons/Player/Proj_AOE.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/Proj_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Weapons/Proj_Mine.gd" type="Script" id=3]
+[ext_resource path="res://Lights/SpotLight.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Audio/MineBlink.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Circle.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.76067
+
+[sub_resource type="Animation" id=2]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D_Blink:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_sound"
+} ]
+}
+
+[node name="Proj_Mine" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+damage_amount = 0
+life_time = 3.0
+move_state_path = NodePath("")
+object_to_spawn_on_destroy = ExtResource( 1 )
+blink_sound = ExtResource( 5 )
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.286275, 0.905882, 0.92549, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+scale = Vector2( 4, 4 )
+shape = SubResource( 1 )
+
+[node name="Move_Behaviour" parent="." index="5"]
+script = null
+
+[node name="Light2D_Blink" parent="." index="6" instance=ExtResource( 4 )]
+enabled = false
+texture_scale = 0.3
+energy = 1.0
+
+[node name="AnimationPlayer_Blink" type="AnimationPlayer" parent="." index="7"]
+anims/Blink = SubResource( 2 )
+
+[editable path="Hitbox"]

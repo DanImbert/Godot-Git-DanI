@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Enemies/NME_Base.gd" type="Script" id=1]
+[ext_resource path="res://Lights/SpotLight.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Audio/Hurt.wav" type="AudioStream" id=4]
+[ext_resource path="res://Player/Health.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Blink"
+length = 0.1
+
+[node name="NME_Base" type="KinematicBody2D"]
+collision_layer = 8
+script = ExtResource( 1 )
+death_sound = ExtResource( 4 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+modulate = Color( 1.5, 1, 1, 1 )
+color = Color( 0.670588, 0.121569, 0.396078, 1 )
+polygon = PoolVector2Array( 0.75, -31, 8.75, -6.25, 31, -6.75, 10.25, 7.5, 18.5, 30.75, 0.25, 15.25, -18.25, 30.5, -11, 7.5, -30.5, -7, -7.25, -6.5 )
+
+[node name="Nav_Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Health" parent="." instance=ExtResource( 5 )]
+
+[node name="Light2D" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1.5, 1, 1, 1 )
+texture_scale = 0.3
+color = Color( 1, 0, 0, 1 )
+energy = 0.4
+
+[node name="HitEffect" type="AnimationPlayer" parent="."]
+anims/Blink = SubResource( 2 )
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="health_depleted" from="Health" to="." method="_on_Health_health_depleted"]
+
+[editable path="Hitbox"]

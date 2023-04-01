@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SweetnBassy_by_RDerks.mp3-699a2730af8cd9dc6df30e48dbe02e5d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SweetnBassy_by_RDerks.mp3"
+dest_files=[ "res://.import/SweetnBassy_by_RDerks.mp3-699a2730af8cd9dc6df30e48dbe02e5d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

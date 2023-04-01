@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Zjuushe_by_RDerks.mp3-eb91da8b6fb0aad831410a01700d7787.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Zjuushe_by_RDerks.mp3"
+dest_files=[ "res://.import/Zjuushe_by_RDerks.mp3-eb91da8b6fb0aad831410a01700d7787.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

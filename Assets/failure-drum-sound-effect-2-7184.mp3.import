@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/failure-drum-sound-effect-2-7184.mp3-19fac3aa605d6941d68d248a347461bb.mp3str"
+
+[deps]
+
+source_file="res://Assets/failure-drum-sound-effect-2-7184.mp3"
+dest_files=[ "res://.import/failure-drum-sound-effect-2-7184.mp3-19fac3aa605d6941d68d248a347461bb.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

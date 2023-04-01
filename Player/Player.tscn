@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Player.png" type="Texture" id=2]
+[ext_resource path="res://Player/Health.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/Hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/PlaySound2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/FX_Player_Hit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Lights/SpotLight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player/Ability_Dodge.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Audio/mixkit-dramatic-metal-explosion-impact-1687.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Audio/mixkit-punch-with-short-whistle-2049.wav" type="AudioStream" id=10]
+[ext_resource path="res://Player/FlagSound.gd" type="Script" id=11]
+[ext_resource path="res://Assets/failure-drum-sound-effect-2-7184.mp3" type="AudioStream" id=12]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 30.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "Blink"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="Player" type="KinematicBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 33
+script = ExtResource( 1 )
+max_speed = 400
+friction = 1500
+
+[node name="Health" parent="." instance=ExtResource( 3 )]
+max_health = 1
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 2 )
+
+[node name="Nav_collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="WeaponSocket" type="Position2D" parent="."]
+position = Vector2( 25.4684, 0 )
+
+[node name="BlockMovementTimer" type="Timer" parent="."]
+
+[node name="BlockRotationTimer" type="Timer" parent="."]
+
+[node name="InvulnerabilityTimer" type="Timer" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource( 4 )]
+collision_layer = 2
+collision_mask = 8
+
+[node name="HitEffect" type="AnimationPlayer" parent="."]
+anims/Blink = SubResource( 4 )
+
+[node name="HitParticles" parent="." instance=ExtResource( 6 )]
+
+[node name="SpotLight" parent="." instance=ExtResource( 7 )]
+
+[node name="Ability" type="Node2D" parent="."]
+script = ExtResource( 8 )
+charge_duration = 3.5
+
+[node name="KnockbackTween" type="Tween" parent="."]
+
+[node name="DeathSound" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 9 )
+
+[node name="HitSound" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 10 )
+pitch_scale = 0.9
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 188, 7 )
+collide_with_areas = true
+
+[node name="FlagSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+bus = "Player"
+script = ExtResource( 11 )
+
+[connection signal="health_depleted" from="Health" to="." method="_on_Health_health_depleted"]
+[connection signal="timeout" from="BlockMovementTimer" to="." method="_on_BlockMovementTimer_timeout"]
+[connection signal="timeout" from="BlockRotationTimer" to="." method="_on_BlockRotationTimer_timeout"]
+[connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="ability_available" from="Ability" to="." method="_on_Ability_ability_available"]
+[connection signal="ability_started" from="Ability" to="." method="_on_Ability_ability_started"]
+
+[editable path="Hitbox"]

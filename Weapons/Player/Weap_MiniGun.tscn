@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Weapons/Player/Proj_Straight.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/Weap_General.gd" type="Script" id=2]
+[ext_resource path="res://Components/PlaySound2D.tscn" type="PackedScene" id=3]
+
+[node name="Weap_MiniGun" type="Node2D"]
+script = ExtResource( 2 )
+display_name = "Mini Gun"
+projectile = ExtResource( 1 )
+time_between_shots = 0.06
+auto_fire = true
+knockback_amount = 700
+block_mov_amount = 0.0
+block_mov_duration = 0.0
+block_rot_duration = 0.0
+accuracy = 20.0
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="ShotSound" parent="." instance=ExtResource( 3 )]
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]

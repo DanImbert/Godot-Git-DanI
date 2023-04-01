@@ -1,0 +1,57 @@
+[gd_resource type="AudioBusLayout" load_steps=5 format=2]
+
+[sub_resource type="AudioEffectLowPassFilter" id=1]
+resource_name = "LowPassFilter"
+cutoff_hz = 10000.0
+
+[sub_resource type="AudioEffectReverb" id=2]
+resource_name = "Reverb"
+predelay_feedback = 0.0
+room_size = 0.1
+damping = 0.1
+spread = 0.5
+wet = 0.1
+
+[sub_resource type="AudioEffectReverb" id=3]
+resource_name = "Reverb"
+room_size = 0.9
+hipass = 0.24
+wet = 0.0
+
+[sub_resource type="AudioEffectDelay" id=4]
+resource_name = "Delay"
+
+[resource]
+bus/0/volume_db = -0.0327301
+bus/1/name = "Player"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = "Master"
+bus/1/effect/0/effect = SubResource( 1 )
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource( 2 )
+bus/1/effect/1/enabled = true
+bus/2/name = "Enemies"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = "Master"
+bus/3/name = "Music"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = "Master"
+bus/3/effect/0/effect = SubResource( 3 )
+bus/3/effect/0/enabled = true
+bus/4/name = "Pickups"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = "Master"
+bus/4/effect/0/effect = SubResource( 4 )
+bus/4/effect/0/enabled = true

@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://HUD/MainMenuScreen.gd" type="Script" id=1]
+[ext_resource path="res://HUD/Button_Transparent.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/Background.tscn" type="PackedScene" id=3]
+
+[node name="MainMenuScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 3 )]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue_Button" parent="Continue" instance=ExtResource( 2 )]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1006.97
+margin_top = -538.459
+margin_right = 913.026
+margin_bottom = 541.541
+
+[node name="Label_PressButton" type="Label" parent="Continue"]
+margin_left = -30.0
+margin_right = 33.0
+margin_bottom = 14.0
+text = "Play Game"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Title"]
+margin_left = -280.0
+margin_right = -168.0
+margin_bottom = 14.0
+rect_scale = Vector2( 5, 5 )
+text = "TwinStick Jukebox"
+align = 1
+
+[connection signal="button_down" from="Continue/Continue_Button" to="." method="_on_Continue_Button_button_down"]

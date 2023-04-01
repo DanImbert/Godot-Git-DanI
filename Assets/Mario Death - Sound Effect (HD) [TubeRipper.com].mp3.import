@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Mario Death - Sound Effect (HD) [TubeRipper.com].mp3-cb13decd8e910129fed613f532204db8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Mario Death - Sound Effect (HD) [TubeRipper.com].mp3"
+dest_files=[ "res://.import/Mario Death - Sound Effect (HD) [TubeRipper.com].mp3-cb13decd8e910129fed613f532204db8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

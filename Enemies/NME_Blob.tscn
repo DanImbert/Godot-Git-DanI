@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Enemies/NME_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Move_Behaviours/Move_FollowTarget.gd" type="Script" id=2]
+[ext_resource path="res://NME_Blob.gd" type="Script" id=3]
+[ext_resource path="res://Weapons/Enemies/NME_Weap_Basic.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Attack_Behaviours/Attack_ShootAfterDelay.gd" type="Script" id=5]
+[ext_resource path="res://Move_Behaviours/Move_RotateOnly.gd" type="Script" id=6]
+[ext_resource path="res://Components/SoftCollision.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 40.0
+
+[node name="NME_Blob" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+move_state_path = NodePath("Move_FollowTarget")
+attack_state_path = NodePath("Attack_ShootAfterDelay")
+weapon_path = NodePath("NME_Weap_Basic")
+
+[node name="Polygon2D" parent="." index="0"]
+light_mask = 3
+color = Color( 0.215686, 0.670588, 0.121569, 1 )
+
+[node name="Light2D" parent="." index="4"]
+color = Color( 0, 1, 0.0862745, 1 )
+
+[node name="Move_RotateOnly" type="Node" parent="." index="6"]
+script = ExtResource( 6 )
+max_speed = 0
+
+[node name="Attack_ShootAfterDelay" type="Node" parent="." index="7"]
+script = ExtResource( 5 )
+trigger_duration = 8.0
+delay = 0.1
+
+[node name="Move_FollowTarget" type="Node" parent="." index="8"]
+script = ExtResource( 2 )
+start_at_max_speed = true
+speed = 20
+min_speed = 5
+max_speed = 7500
+max_speed_randomisation = 1000
+acceleration = 5
+
+[node name="NME_Weap_Basic" parent="." index="9" instance=ExtResource( 4 )]
+
+[node name="AttackTimer" type="Timer" parent="." index="10"]
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="." index="11"]
+curve = SubResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D" index="0"]
+
+[node name="Soft_Collision" parent="Path2D/PathFollow2D/Area2D" index="0" instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D/Soft_Collision" index="0"]
+shape = SubResource( 2 )
+
+[connection signal="target_distance_reached" from="Move_FollowTarget" to="." method="_on_Move_FollowTarget_target_distance_reached"]
+
+[editable path="Hitbox"]
+[editable path="Path2D/PathFollow2D/Area2D/Soft_Collision"]

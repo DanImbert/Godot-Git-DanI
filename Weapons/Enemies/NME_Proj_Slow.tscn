@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Weapons/Proj_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Move_Behaviours/Move_Wander.gd" type="Script" id=2]
+[ext_resource path="res://Components/AutoRotateSprite.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Swarmer.png" type="Texture" id=4]
+
+[node name="NME_Proj_Slow" instance=ExtResource( 1 )]
+collision_layer = 4
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 1, 0.313726, 0.392157, 1 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+script = ExtResource( 3 )
+
+[node name="Hitbox" parent="." index="2"]
+collision_mask = 3
+
+[node name="Move_Behaviour" parent="." index="5"]
+script = ExtResource( 2 )
+start_at_max_speed = true
+speed = 0
+max_speed = 200
+max_rotation_speed = 90
+
+[editable path="Hitbox"]

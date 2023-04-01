@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://HUD/SelectScreen.gd" type="Script" id=1]
+[ext_resource path="res://HUD/Button_Transparent.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Cratebox_SelectImage.png" type="Texture" id=4]
+
+[node name="SelectScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.00012207
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = -920.0
+margin_bottom = -500.0
+
+[node name="Select_GameMode" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Select_GameMode"]
+margin_left = -377.55
+margin_top = -137.806
+margin_right = 1150.45
+margin_bottom = 716.194
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Select_GameMode"]
+margin_left = -49.0815
+margin_top = 303.235
+margin_right = 50.9185
+margin_bottom = 317.235
+text = "SuperCratebox"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Select_Difficulty" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Select_Difficulty"]
+margin_left = -5.66321
+margin_top = 179.336
+margin_right = 94.3368
+margin_bottom = 193.336
+text = "Select Difficulty"
+
+[node name="Continue" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_PressButton" type="Label" parent="Continue"]
+text = "Press Fire to Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue_Button" parent="Continue" instance=ExtResource( 2 )]
+margin_left = -958.112
+margin_top = -967.856
+margin_right = 961.888
+margin_bottom = 112.144
+
+[connection signal="visibility_changed" from="." to="." method="_on_SelectScreen_visibility_changed"]
+[connection signal="button_down" from="Continue/Continue_Button" to="." method="_on_Continue_Button_button_down"]

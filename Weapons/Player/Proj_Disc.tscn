@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Weapons/Proj_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/Proj_Bounce.gd" type="Script" id=2]
+[ext_resource path="res://Assets/disc.png" type="Texture" id=3]
+[ext_resource path="res://Components/AutoRotateSprite.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 24.7736
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 22.3979
+
+[node name="Proj_Disc" instance=ExtResource( 1 )]
+collision_mask = 33
+script = ExtResource( 2 )
+damage_amount = 5
+piercing = true
+life_time = 8.0
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.286275, 0.905882, 0.92549, 1 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+rot_speed = -130
+
+[node name="nav_CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 2 )
+
+[node name="Move_Behaviour" parent="." index="5"]
+speed = 400
+
+[node name="ActivationTimer" type="Timer" parent="." index="6"]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="ActivationTimer" to="." method="_on_ActivationTimer_timeout"]
+
+[editable path="Hitbox"]

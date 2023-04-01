@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Qtestsgun1.ogg-5d180b5b103b5ed8686f88124d7113e4.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Qtestsgun1.ogg"
+dest_files=[ "res://.import/Qtestsgun1.ogg-5d180b5b103b5ed8686f88124d7113e4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/retro_gaming-fx-i-28793 (mp3cut.net).mp3-f4e45bbea35705bd099e2eb1ade5c0a6.mp3str"
+
+[deps]
+
+source_file="res://Assets/retro_gaming-fx-i-28793 (mp3cut.net).mp3"
+dest_files=[ "res://.import/retro_gaming-fx-i-28793 (mp3cut.net).mp3-f4e45bbea35705bd099e2eb1ade5c0a6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

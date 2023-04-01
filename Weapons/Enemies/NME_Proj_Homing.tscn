@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Weapons/Proj_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Triangle.png" type="Texture" id=2]
+[ext_resource path="res://Move_Behaviours/Move_FollowTarget.gd" type="Script" id=3]
+[ext_resource path="res://Weapons/Proj_Homing.gd" type="Script" id=4]
+[ext_resource path="res://Weapons/Enemies/NME_Proj_AOE.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 11.0
+height = 11.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 11.0
+height = 11.0
+
+[node name="NME_Proj_Homing" instance=ExtResource( 1 )]
+collision_layer = 16
+script = ExtResource( 4 )
+object_to_spawn_on_destroy = ExtResource( 6 )
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.670588, 0.121569, 0.396078, 1 )
+scale = Vector2( 0.4, 0.6 )
+texture = ExtResource( 2 )
+
+[node name="nav_CollisionShape2D" parent="." index="1"]
+position = Vector2( -6.5, 0.25 )
+shape = SubResource( 1 )
+
+[node name="Hitbox" parent="." index="2"]
+collision_mask = 19
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( -5.75, -0.125 )
+shape = SubResource( 2 )
+
+[node name="Move_Behaviour" parent="." index="5"]
+script = ExtResource( 3 )
+max_speed = 500
+max_speed_randomisation = 50
+max_rotation_speed = 80
+
+[editable path="Hitbox"]

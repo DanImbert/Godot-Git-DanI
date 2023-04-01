@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Game/GameMode.gd" type="Script" id=1]
+[ext_resource path="res://Game/GameStates/GameState_Play_Cratebox.gd" type="Script" id=2]
+[ext_resource path="res://Game/GameStates/GameState_GameOver.gd" type="Script" id=3]
+[ext_resource path="res://Game/GameStates/GameState_MainMenu.gd" type="Script" id=4]
+
+[node name="GameMode" type="Node"]
+script = ExtResource( 1 )
+initial_state_path = NodePath("Play")
+
+[node name="MainMenu" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Play" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="GameOver" type="Node" parent="."]
+script = ExtResource( 3 )

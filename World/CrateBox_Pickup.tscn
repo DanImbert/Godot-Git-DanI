@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://World/CrateBox_Pickup.gd" type="Script" id=1]
+[ext_resource path="res://Lights/SpotLight.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/background.png" type="Texture" id=3]
+[ext_resource path="res://Components/AutoRotateSprite.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Audio/Powerup.wav" type="AudioStream" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 20 )
+
+[node name="CrateBox_Pickup" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 1 )
+pickup_sound = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1.51, 0.85, 0.27, 1 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="Light2D" parent="." instance=ExtResource( 2 )]
+color = Color( 1, 0, 1, 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_CrateBox_Pickup_body_entered"]
